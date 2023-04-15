@@ -29,8 +29,8 @@ function rain() {
 }
 
 function addRainSound() {
-    const audioElement = new Audio('../assets/sound/rain.mp3');
-    const thunderElement = new Audio('../assets/sound/thunder.wav');
+    const audioElement = new Audio('https://zvukipro.com/index.php?do=download&id=11782');
+    const thunderElement = new Audio('https://zvukipro.com/index.php?do=download&id=792');
     let thunderTimeoutId;
 
     const playAudio = (audio) => {
