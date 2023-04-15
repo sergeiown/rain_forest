@@ -29,24 +29,32 @@ function rain() {
 }
 
 function addRainSound() {
-    const audioElement = new Audio('../sound/rain.wav');
-    const thunderElement = new Audio('../sound/thunder.wav');
+    const audioElement = new Audio('../assets/sound/rain.mp3');
+    const thunderElement = new Audio('../assets/sound/thunder.wav');
+    let thunderTimeoutId;
 
     const playAudio = (audio) => {
         audio.play();
         audio.loop = true;
     };
 
-    const playThunder = () => {
-        playAudio(thunderElement);
-        const delay = Math.floor(Math.random() * 25000) + 5000;
-        setTimeout(playThunder, delay);
+    const playThunder = (audio) => {
+        audio.play();
+        audio.loop = false;
+        clearTimeout(thunderTimeoutId);
+        delayThunder(audio);
     };
 
-    playThunder();
+    const delayThunder = (audio) => {
+        const delay = Math.floor(Math.random() * 25000) + 10000;
+        thunderTimeoutId = setTimeout(() => playThunder(audio), delay);
+        console.log(`Next thunder at ${Math.round(delay / 1000, 0)} seconds`);
+    };
 
     const button = document.createElement('button');
-    button.textContent = 'Toggle Sound';
+    button.textContent = '🔇';
+    button.style.fontSize = '3rem';
+    button.style.opacity = '0.4';
     button.style.position = 'fixed';
     button.style.top = '10px';
     button.style.left = '10px';
@@ -54,10 +62,13 @@ function addRainSound() {
     button.addEventListener('click', () => {
         if (audioElement.paused) {
             playAudio(audioElement);
-            playAudio(thunderElement);
+            delayThunder(thunderElement);
+            button.textContent = '🔊';
         } else {
             audioElement.pause();
             thunderElement.pause();
+            button.textContent = '🔇';
+            clearTimeout(thunderTimeoutId);
         }
     });
 
