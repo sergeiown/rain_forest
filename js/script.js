@@ -28,8 +28,48 @@ function rain() {
     rainContainer.innerHTML = drops;
 }
 
+function addRainSound() {
+    const audioElement = new Audio('../sound/rain.wav');
+    const thunderElement = new Audio('../sound/thunder.wav');
+
+    const playAudio = (audio) => {
+        audio.play();
+        audio.loop = true;
+    };
+
+    const playThunder = () => {
+        playAudio(thunderElement);
+        const delay = Math.floor(Math.random() * 25000) + 5000;
+        setTimeout(playThunder, delay);
+    };
+
+    playThunder();
+
+    // Створюємо кнопку
+    const button = document.createElement('button');
+    button.textContent = 'Toggle Sound';
+    button.style.position = 'fixed';
+    button.style.top = '10px';
+    button.style.left = '10px';
+
+    // Додаємо обробник кліку на кнопку
+    button.addEventListener('click', () => {
+        if (audioElement.paused) {
+            playAudio(audioElement);
+            playAudio(thunderElement);
+        } else {
+            audioElement.pause();
+            thunderElement.pause();
+        }
+    });
+
+    // Додаємо кнопку на сторінку
+    document.body.appendChild(button);
+}
+
 function windowLoad() {
     rain();
+    addRainSound();
 }
 
 window.addEventListener('load', windowLoad);
