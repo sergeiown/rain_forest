@@ -29,8 +29,8 @@ function rain() {
 }
 
 function addRainSound() {
-    const audioElement = new Audio('./sound/rain.wav');
-    const thunderElement = new Audio('./sound/thunder.wav');
+    const audioElement = new Audio('../sound/rain.wav');
+    const thunderElement = new Audio('../sound/thunder.wav');
 
     const playAudio = (audio) => {
         audio.play();
@@ -45,14 +45,12 @@ function addRainSound() {
 
     playThunder();
 
-    // Створюємо кнопку
     const button = document.createElement('button');
     button.textContent = 'Toggle Sound';
     button.style.position = 'fixed';
     button.style.top = '10px';
     button.style.left = '10px';
 
-    // Додаємо обробник кліку на кнопку
     button.addEventListener('click', () => {
         if (audioElement.paused) {
             playAudio(audioElement);
@@ -63,7 +61,6 @@ function addRainSound() {
         }
     });
 
-    // Додаємо кнопку на сторінку
     document.body.appendChild(button);
 }
 
