@@ -29,8 +29,8 @@ function rain() {
 }
 
 function addRainSound() {
-    const audioElement = new Audio('../sound/rain.wav');
-    const thunderElement = new Audio('../sound/thunder.wav');
+    const audioElement = new Audio('./sound/rain.wav');
+    const thunderElement = new Audio('./sound/thunder.wav');
 
     const playAudio = (audio) => {
         audio.play();
