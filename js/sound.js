@@ -28,7 +28,7 @@ export default function addRainSound() {
     button.style.fontSize = '3rem';
     button.title = 'Turn on sound';
     button.style.backgroundColor = 'transparent';
-    button.style.opacity = '0.5';
+    button.style.opacity = '0.75';
     button.style.position = 'fixed';
     button.style.top = '10px';
     button.style.left = '10px';
