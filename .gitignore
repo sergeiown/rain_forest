@@ -1,1 +1,6 @@
+/public
+/.firebase
+
+.firebaserc
+firebase.json
 jsconfig.json
