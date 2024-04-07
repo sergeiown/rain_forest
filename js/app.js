@@ -8,4 +8,8 @@ function windowLoad() {
     addRainSound();
 }
 
+window.addEventListener('orientationchange', () => {
+    location.reload();
+});
+
 window.addEventListener('load', windowLoad);
